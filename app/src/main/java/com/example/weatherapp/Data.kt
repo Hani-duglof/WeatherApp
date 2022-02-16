@@ -1,4 +1,7 @@
 package com.example.weatherapp
 
-class Data {
-}
+
+data class Data(val date: Long)
+
+
+

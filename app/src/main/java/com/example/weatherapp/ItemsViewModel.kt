@@ -1,4 +1,4 @@
 package com.example.weatherapp
 
-class ItemsViewModel {
+data class ItemsViewModel(val image: Int, val text: String) {
 }
