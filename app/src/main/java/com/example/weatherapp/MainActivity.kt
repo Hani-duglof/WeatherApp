@@ -48,8 +48,10 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         viewModel.currentConditions.observe(this) { currentConditions ->
             bindData(currentConditions)
-        }
 
+
+
+        }
         viewModel.loadData()
 
     }
