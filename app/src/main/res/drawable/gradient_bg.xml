@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape
 
-     android:shape="rectangle"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-   <gradient
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
 
-       android:angle="90"
-       android:startColor="#ffffff"
-       android:endColor="#7fbfbf"
-       android:type="linear">
+        android:angle="90"
+        android:endColor="#7fbfbf"
+        android:startColor="#ffffff"
+        android:type="linear" />
+
+    <gradient
+
+        android:angle="90"
+        android:endColor="#7fbfbf"
+        android:startColor="#ffffff"
+        android:type="linear">
 
 
-
-
-
-</gradient>
-
-
+    </gradient>
 
 
 </shape>

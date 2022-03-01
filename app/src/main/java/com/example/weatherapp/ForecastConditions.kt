@@ -1,8 +1,8 @@
 package com.example.weatherapp
 
-data class CurrentConditions(
+data class ForecastConditions(
     val weather: List<WeatherCondition>,
-    val main: Currents,
+    val main: Forecast,
     val name: String,
 
     )

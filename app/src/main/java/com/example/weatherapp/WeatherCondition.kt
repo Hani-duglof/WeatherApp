@@ -1,4 +1,6 @@
 package com.example.weatherapp
 
-class WeatherCondition {
-}
+data class WeatherCondition(
+    val main: String,
+    val icon: String
+)
