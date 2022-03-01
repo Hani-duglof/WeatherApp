@@ -20,8 +20,7 @@ import java.util.*
 import javax.inject.Inject
 import com.example.weatherapp.ForecastConditions as ForecastConditions
 
-
-class ForecastActivity : AppCompatActivity(){
+class ForecastActivity : AppCompatActivity() {
 
 
     private val apiKey = "5c9a4b8e3f47b8fc9e9518ea4d2a5bed"
@@ -30,34 +29,27 @@ class ForecastActivity : AppCompatActivity(){
     private lateinit var forecastTemp: TextView
     private lateinit var conditionIcon: ImageView
     private lateinit var feelsLike: TextView
-    private lateinit var forecastMin : TextView
-    private lateinit var forecastMax : TextView
-    private lateinit var pressure  : TextView
-    private lateinit var humidity : TextView
-    private lateinit var Sunrise : TextView
-    private lateinit var Sunset : TextView
+    private lateinit var forecastMin: TextView
+    private lateinit var forecastMax: TextView
+    private lateinit var pressure: TextView
+    private lateinit var humidity: TextView
+    private lateinit var Sunrise: TextView
+    private lateinit var Sunset: TextView
 
-
-    override fun onCreate(savedInstanceState: Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
-
 
         forecastTemp = findViewById(R.id.temperature1)
         conditionIcon = findViewById(R.id.sun1)
         forecastMin = findViewById(R.id.Low)
         forecastMax = findViewById(R.id.High)
-        Sunrise= findViewById(R.id.Sunrise)
-        Sunset= findViewById(R.id.sunset)
-
-
-
-
+        Sunrise = findViewById(R.id.Sunrise)
+        Sunset = findViewById(R.id.sunset)
 
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
-
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://pro.openweathermap.org/data/2.5/weather?q=London,uk&APPID=5c9a4b8e3f47b8fc9e9518ea4d2a5bed")
@@ -94,8 +86,7 @@ class ForecastActivity : AppCompatActivity(){
 
     }
 
-    private fun bindData(forecastConditions: ForecastConditions){
-
+    private fun bindData(forecastConditions: ForecastConditions) {
 
         cityName.text = forecastConditions.name
         findViewById<TextView>(R.id.temperature1).text = forecastTemp.toString()
@@ -106,11 +97,8 @@ class ForecastActivity : AppCompatActivity(){
         findViewById<TextView>(R.id.Humidity).text = humidity.toString()
 
 
-
-
-
-        val  iconName=  forecastConditions.weather.firstOrNull()?.icon
-        val iconUrl= "https://openweathermap.org/img/wn/${iconName}@2x.png"
+        val iconName = forecastConditions.weather.firstOrNull()?.icon
+        val iconUrl = "https://openweathermap.org/img/wn/${iconName}@2x.png"
         Glide.with(this)
             .load(iconUrl)
             .into(conditionIcon)

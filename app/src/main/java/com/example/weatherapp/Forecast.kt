@@ -40,17 +40,11 @@ class Forecast : AppCompatActivity() {
     private lateinit var recyclerView1: RecyclerView
     private val adapterData1 = listOf<Data>(
 
-
     )
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
-
-
-
-
 
 
         recyclerView = findViewById(R.id.recyclerView)

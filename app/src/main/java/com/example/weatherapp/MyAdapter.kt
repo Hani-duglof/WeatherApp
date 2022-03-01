@@ -14,9 +14,7 @@ import java.time.format.DateTimeFormatter
 
 class MyAdapter(private val data: List<Data>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
-
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
 
         private val dateView: TextView = view.findViewById(R.id.date)
         val instant = Int
@@ -28,12 +26,9 @@ class MyAdapter(private val data: List<Data>) : RecyclerView.Adapter<MyAdapter.V
             val formatter = DateTimeFormatter.ofPattern("MMM d ")
 
             dateView.text = formatter.format(dateTime)
-
-
         }
 
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
