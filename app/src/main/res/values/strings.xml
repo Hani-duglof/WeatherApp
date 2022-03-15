@@ -9,6 +9,9 @@
     <string name="humidity">Humidity %1$d </string>
     <string name="pressure">Pressure %1$d hPa</string>
     <string name="button_text">Forecast</string>
+    <string name="zip_code">ZipCode</string>
+    <string name="submit">submit</string>
+    <string name="ok">Ok</string>
 
 
 </resources>

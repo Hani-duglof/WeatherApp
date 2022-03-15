@@ -14,8 +14,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    @Inject
-    lateinit var viewModel: MaiViewModel
+    @Inject lateinit var viewModel: MaiViewModel
 
     private val apiKey = "5c9a4b8e3f47b8fc9e9518ea4d2a5bed"
     private lateinit var api: Api
