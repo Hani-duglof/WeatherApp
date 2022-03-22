@@ -20,12 +20,10 @@ class Search : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-
 
 
         mainViewModelSearch = MainViewModelSearch()
@@ -34,8 +32,6 @@ class Search : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-
-
 
 
 

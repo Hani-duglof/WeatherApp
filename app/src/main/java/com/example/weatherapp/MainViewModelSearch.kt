@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 import androidx.lifecycle.MutableLiveData as MutableLiveData1
 
-class MainViewModelSearch: ViewModel() {
+class MainViewModelSearch : ViewModel() {
 
     private var zipCode: String? = null
 
@@ -17,15 +17,13 @@ class MainViewModelSearch: ViewModel() {
         get() = _showErrorDialog
 
 
-
-
     val enableButton: LiveData<Boolean>
         get() = _enableButton
 
 
     fun updateZipCode(zipCode: String) {
         if (zipCode != this.zipCode) {
-            this.zipCode=  zipCode
+            this.zipCode = zipCode
             _enableButton.value = isValidZipCode(zipCode)
         }
     }
@@ -36,7 +34,7 @@ class MainViewModelSearch: ViewModel() {
 
     fun submitButtonClicked() {
 
-        Log.d(MainViewModelSearch:: class.simpleName, zipCode?: "No Zip yet!")
-        _showErrorDialog.value= Random.nextBoolean()
+        Log.d(MainViewModelSearch::class.simpleName, zipCode ?: "No Zip yet!")
+        _showErrorDialog.value = Random.nextBoolean()
     }
 }

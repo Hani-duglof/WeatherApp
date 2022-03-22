@@ -7,7 +7,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.weatherapp.DaggerWeatherApplication_HiltComponents_SingletonC.builder
 
 
-class ErrorDialogFragment: DialogFragment() {
+class ErrorDialogFragment : DialogFragment() {
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
@@ -16,7 +16,7 @@ class ErrorDialogFragment: DialogFragment() {
             .setPositiveButton(R.string.ok, null)
             .create()
 
-    companion object{
+    companion object {
         const val TAG = "ErrorDialogFragment"
     }
 

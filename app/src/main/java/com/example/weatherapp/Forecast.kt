@@ -17,24 +17,46 @@ class Forecast : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
 
-    private val adapterData = listOf<Data>(
+    val temperature = listOf<ForecastTemp>(
+        ForecastTemp(20F, 10F, 37F),
+        ForecastTemp(30F, 20F, 36F),
+        ForecastTemp(58F, 25F, 20F),
+        ForecastTemp(13F, 32F, 20F),
+        ForecastTemp(27F, 30F, 19F),
+        ForecastTemp(21F, 15F, 18F),
+        ForecastTemp(29F, 32F, 24F),
+        ForecastTemp(35F, 27F, 35F),
+        ForecastTemp(14F, 32F, 27F),
+        ForecastTemp(30F, 18F, 31F),
+        ForecastTemp(15F, 7F, 20F),
+        ForecastTemp(27F, 11F, 24F),
+        ForecastTemp(28F, 10F, 30F),
+        ForecastTemp(29F, 8F, 31F),
+        ForecastTemp(36F, 30F, 36F),
+        ForecastTemp(38F, 10F, 30F)
 
-        Data(date = 1643136300),
-        Data(date = 1643222700),
-        Data(date = 1643309100),
-        Data(date = 1643395500),
-        Data(date = 1643481900),
-        Data(date = 1643654700),
-        Data(date = 1643741100),
-        Data(date = 1643827500),
-        Data(date = 1643913900),
-        Data(date = 1644000300),
-        Data(date = 1644086700),
-        Data(date = 1644173100),
-        Data(date = 1644259500),
-        Data(date = 1644345900),
-        Data(date = 1644432300),
-        Data(date = 1644518700),
+
+    )
+
+    val adapterData = listOf<Data>(
+        Data(1644452968, 1644452968, 1571485599, temperature.get(0), 985F, 61),
+        Data(1644539368, 1644539368, 1644449564, temperature.get(1), 1015F, 59),
+        Data(1644625768, 1644625768, 1644412964, temperature.get(2), 1005F, 71),
+        Data(1644712168, 1644712168, 1644363104, temperature.get(3), 990F, 65),
+        Data(1644798568, 1644798568, 1644363104, temperature.get(4), 1115F, 81),
+        Data(1644884968, 1644884968, 1571485599, temperature.get(5), 1005F, 57),
+        Data(1644971368, 1644971368, 1644449564, temperature.get(6), 989F, 64),
+        Data(1645057768, 1645057768, 1644363104, temperature.get(7), 1005F, 70),
+        Data(1645144168, 1645144168, 1571485599, temperature.get(8), 1005F, 56),
+        Data(1645230568, 1645230568, 1644363104, temperature.get(9), 990F, 69),
+        Data(1645316968, 1645316968, 1571485599, temperature.get(10), 900F, 57),
+        Data(1645403368, 1645403368, 1644412964, temperature.get(11), 1115F, 56),
+        Data(1645489768, 1645489768, 1644363104, temperature.get(12), 1005F, 70),
+        Data(1645576168, 1645576168, 1644452968, temperature.get(13), 990F, 61),
+        Data(1645662568, 1645662568, 1644449564, temperature.get(14), 1005F, 57),
+        Data(1645748968, 1645748968, 1571485599, temperature.get(15), 985F, 64)
+
+
     )
 
     private lateinit var recyclerView1: RecyclerView
