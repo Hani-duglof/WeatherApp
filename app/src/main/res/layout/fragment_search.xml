@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_bg">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.SearchFragment">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/Searchbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            android:textColor="@color/white"
+            app:title="Search" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Searchbar">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/EnterZipCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ZipCode"
+                android:layout_width="201dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:background="@drawable/search_bg"
+                android:focusableInTouchMode="true"
+                android:hint="    Enter Zip Code"
+                android:inputType="number"
+                android:padding="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="@+id/EnterZipCode"
+                app:layout_constraintStart_toStartOf="@+id/EnterZipCode"
+                app:layout_constraintTop_toBottomOf="@+id/EnterZipCode" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/SearchBT"
+                android:layout_width="167dp"
+                android:layout_height="63dp"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="@color/orange"
+                android:text="Search"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:cornerRadius="60dp"
+                app:layout_constraintEnd_toEndOf="@+id/ZipCode"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/ZipCode"
+                app:layout_constraintTop_toBottomOf="@+id/ZipCode"
+                app:strokeColor="@color/Amber"
+                tools:ignore="UnknownId" />
+
+            <ImageButton
+                android:id="@+id/CurrentLocationBT"
+                android:layout_width="44dp"
+                android:layout_height="52dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/GR"
+                android:elevation="@dimen/_12sdp"
+                android:src="@drawable/mylocation_foreground"
+                android:text="Current Location"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.850"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ZipCode"
+                tools:ignore="MissingConstraints,UnknownIdInLayout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </RelativeLayout>
+</layout>
