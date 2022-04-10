@@ -9,8 +9,8 @@ import javax.inject.Inject
 class Search @Inject constructor(private val apiService: ApiService) {
 
 
-    suspend fun getWeather(zipCode:String): Response<WeatherResponseDTO> {
-           return apiService.getWeatherDetails(zipCode)
+    suspend fun getWeather(zipCode: String): Response<WeatherResponseDTO> {
+        return apiService.getWeatherDetails(zipCode)
     }
 
 

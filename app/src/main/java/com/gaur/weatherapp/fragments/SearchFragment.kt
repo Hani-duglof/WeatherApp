@@ -120,7 +120,8 @@ class SearchFragment : Fragment() {
                         searchViewModel.resetWeatherValue()
                     }
                     is Resource.Error -> {
-                        AlertDialog.Builder(requireContext()).setTitle("Error fetching data for that zip code")
+                        AlertDialog.Builder(requireContext())
+                            .setTitle("Error fetching data for that zip code")
                             .setMessage(it.message)
                             .create().show()
 

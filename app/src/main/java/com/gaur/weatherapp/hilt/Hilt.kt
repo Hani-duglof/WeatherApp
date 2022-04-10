@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @InstallIn(SingletonComponent::class)
 @Module
-object HiltModules{
+object HiltModules {
 
 
     @Provides
@@ -21,7 +21,6 @@ object HiltModules{
             .addConverterFactory(GsonConverterFactory.create()).build()
             .create(ApiService::class.java)
     }
-
 
 
 }
