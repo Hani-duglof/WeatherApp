@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class Forecast @Inject constructor(private val apiService: ApiService) {
 
-    suspend fun getSixteenDaysForecast(lat:Double,long:Double): Response<ForecastDaily> {
+    suspend fun getSixteenDaysForecast(lat: Double, long: Double): Response<ForecastDaily> {
         return apiService.getSixteenDaysForecast(lat, long)
     }
 

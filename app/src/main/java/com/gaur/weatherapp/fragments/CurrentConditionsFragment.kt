@@ -103,13 +103,16 @@ class CurrentConditionsFragment : Fragment() {
 
     private fun setArgumentedData(weatherResponse: WeatherResponseDTO?) {
         weatherResponse?.let {
-            binding.cityName.text= it.name
-            binding.Temprature1.text =formatUptoOneDecimal(it.main.temp.minus(273)*9/5+ 32 )+"\u2109"
-            binding.FeelsLikeTemp.text="Feels like "+formatUptoOneDecimal(it.main.feels_like.minus(273)*9/5+ 32 )+"\u2109"
-            binding.HighTemp.text="High "+formatUptoOneDecimal(it.main.temp_max.minus(273) *9/5+ 32 )+"\u2109"
-            binding.LowTemp.text="Low "+formatUptoOneDecimal(it.main.temp_min.minus(273)*9/5+ 32 )+"\u2109"
-            binding.HumidityTemp.text="Humidity "+ it.main.humidity +" %"
-            binding.PressureTemp.text="Pressure "+it.main.pressure+" hPa"
+            binding.cityName.text = it.name
+            binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)
+            binding.FeelsLikeTemp.text =
+                "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)
+            binding.HighTemp.text =
+                "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)
+            binding.LowTemp.text =
+                "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)
+            binding.HumidityTemp.text = "Humidity " + it.main.humidity + " %"
+            binding.PressureTemp.text = "Pressure " + it.main.pressure + " hPa"
             Glide.with(binding.sun)
                 .load("https://openweathermap.org/img/wn/${it.weather[0].icon}@2x.png")
                 .into(binding.sun)
@@ -140,13 +143,16 @@ class CurrentConditionsFragment : Fragment() {
     }
 
     private fun setData(it: WeatherResponseDTO) {
-        binding.cityName.text= it.name
-        binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273)*9/5+ 32 )+"\u2109"
-        binding.FeelsLikeTemp.text="Feels like "+formatUptoOneDecimal(it.main.feels_like.minus(273)*9/5+ 32 )+"\u2109"
-        binding.HighTemp.text="High "+formatUptoOneDecimal(it.main.temp_max.minus(273) *9/5+ 32 )+"\u2109"
-        binding.LowTemp.text="Low "+formatUptoOneDecimal(it.main.temp_min.minus(273)*9/5+ 32 )+"\u2109"
-        binding.HumidityTemp.text="Humidity "+ it.main.humidity +" %"
-        binding.PressureTemp.text="Pressure "+it.main.pressure+" hPa"
+        binding.cityName.text = it.name
+        binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)
+        binding.FeelsLikeTemp.text =
+            "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)
+        binding.HighTemp.text =
+            "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)
+        binding.LowTemp.text =
+            "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)
+        binding.HumidityTemp.text = "Humidity " + it.main.humidity + " %"
+        binding.PressureTemp.text = "Pressure " + it.main.pressure + " hPa"
         Glide.with(binding.sun)
             .load("https://openweathermap.org/img/wn/${it.weather[0].icon}@2x.png")
             .into(binding.sun)

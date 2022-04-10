@@ -43,6 +43,7 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/Date1"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Temp: 72" />

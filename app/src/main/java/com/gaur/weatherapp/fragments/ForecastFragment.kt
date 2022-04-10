@@ -60,17 +60,17 @@ class ForecastFragment : Fragment() {
             it?.let {
                 when (it) {
                     is Resource.Loading -> {
-                    binding.progress.visibility=View.VISIBLE
+                        binding.progress.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
-                        binding.progress.visibility=View.GONE
+                        binding.progress.visibility = View.GONE
                         it.data?.let {
-                            forecastAdapter= ForecastWeatherAdapter(it)
+                            forecastAdapter = ForecastWeatherAdapter(it)
                             binding.rvForecast.adapter = forecastAdapter
                         }
                     }
                     is Resource.Error -> {
-                        binding.progress.visibility=View.GONE
+                        binding.progress.visibility = View.GONE
                         AlertDialog.Builder(requireContext()).setTitle("Error")
                             .setMessage(it.message)
                             .create().show()
