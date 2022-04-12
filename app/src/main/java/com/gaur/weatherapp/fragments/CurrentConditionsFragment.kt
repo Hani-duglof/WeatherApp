@@ -104,13 +104,13 @@ class CurrentConditionsFragment : Fragment() {
     private fun setArgumentedData(weatherResponse: WeatherResponseDTO?) {
         weatherResponse?.let {
             binding.cityName.text = it.name
-            binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)
+            binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)+"°"
             binding.FeelsLikeTemp.text =
-                "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)
+                "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)+"°"
             binding.HighTemp.text =
-                "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)
+                "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)+"°"
             binding.LowTemp.text =
-                "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)
+                "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)+"°"
             binding.HumidityTemp.text = "Humidity " + it.main.humidity + " %"
             binding.PressureTemp.text = "Pressure " + it.main.pressure + " hPa"
             Glide.with(binding.sun)
@@ -144,13 +144,13 @@ class CurrentConditionsFragment : Fragment() {
 
     private fun setData(it: WeatherResponseDTO) {
         binding.cityName.text = it.name
-        binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)
+        binding.Temprature1.text = formatUptoOneDecimal(it.main.temp.minus(273) * 9 / 5 + 32)+"°"
         binding.FeelsLikeTemp.text =
-            "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)
+            "Feels like " + formatUptoOneDecimal(it.main.feels_like.minus(273) * 9 / 5 + 32)+"°"
         binding.HighTemp.text =
-            "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)
+            "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)+"°"
         binding.LowTemp.text =
-            "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)
+            "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)+"°"
         binding.HumidityTemp.text = "Humidity " + it.main.humidity + " %"
         binding.PressureTemp.text = "Pressure " + it.main.pressure + " hPa"
         Glide.with(binding.sun)
@@ -194,7 +194,7 @@ class CurrentConditionsFragment : Fragment() {
     }
 
     private fun formatUptoOneDecimal(value: Double): String {
-        return "%.2f".format(value)
+        return "%.0f".format(value)
 
 
     }

@@ -4,7 +4,7 @@ import java.sql.Date
 import java.text.SimpleDateFormat
 
 fun formatUptoOneDecimal(value: Double): String {
-    return "%.2f".format(value)
+    return "%.0f".format(value)
 }
 
 fun convertMilliTime(milli: Long): String {
