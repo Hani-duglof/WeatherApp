@@ -91,6 +91,22 @@
                 app:layout_constraintTop_toTopOf="@+id/ZipCode"
                 tools:ignore="MissingConstraints,UnknownIdInLayout" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTurnOnNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/orange"
+                android:elevation="@dimen/_12sdp"
+                android:text="@string/turn_on_notifications"
+                android:textAllCaps="false"
+                app:cornerRadius="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.577"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SearchBT" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

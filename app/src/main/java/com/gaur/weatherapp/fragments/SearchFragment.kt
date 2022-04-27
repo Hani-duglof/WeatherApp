@@ -17,17 +17,24 @@ import androidx.core.app.ActivityCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.gaur.weatherapp.R
+import androidx.work.*
+import com.gaur.weatherapp.NotificationService
 import androidx.navigation.fragment.findNavController
+import com.gaur.weatherapp.Data.*
 import com.gaur.weatherapp.databinding.FragmentSearchBinding
-import com.gaur.weatherapp.Data.Resource
 import com.gaur.weatherapp.viewmodels.SearchViewModel
 import com.google.android.gms.location.*
+import com.gaur.weatherapp.work_manager.GetWeatherDataWorker
 import dagger.hilt.android.AndroidEntryPoint
-
+import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
+    @Inject
+    lateinit var sharedPref: AppSharedPref
     private val searchViewModel: SearchViewModel by viewModels()
 
     private var _binding: FragmentSearchBinding? = null
@@ -36,6 +43,7 @@ class SearchFragment : Fragment() {
 
 
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private var currentOrNotification = URL.CurrentOrNotification.CURRENT
 
 
     private val callback = object : LocationCallback() {
@@ -46,18 +54,24 @@ class SearchFragment : Fragment() {
         override fun onLocationResult(result: LocationResult) {
             val lastLocation = result.lastLocation
             Log.d("TAG", "onLocationResult: ${lastLocation?.longitude.toString()}")
-
-            val lat = lastLocation.latitude
-            val long = lastLocation.longitude
-
-            findNavController().navigate(
-                SearchFragmentDirections.actionSearchFragmentToCurrentConditionsFragment(
-                    isCurrentLocation = true,
-                    lat = lat.toFloat(),
-                    long = long.toFloat()
-                )
-            )
-
+            sharedPref.putLatitude(lastLocation.latitude.toString())
+            sharedPref.putLongitude(lastLocation.longitude.toString())
+            when (currentOrNotification) {
+                URL.CurrentOrNotification.CURRENT -> {
+                    findNavController().navigate(
+                        SearchFragmentDirections.actionSearchFragmentToCurrentConditionsFragment(
+                            isCurrentLocation = true,
+                            lat = sharedPref.getLatitude().toFloat(),
+                            long = sharedPref.getLatitude().toFloat()
+                        )
+                    )
+                }
+                URL.CurrentOrNotification.NOTIFICATION -> {
+                    sharedPref.putIsNotificationOn(true)
+                    binding.btnTurnOnNotification.text = getString(R.string.turn_off_notifications)
+                    enqueuePeriodicWork()
+                }
+            }
             super.onLocationResult(result)
         }
     }
@@ -79,11 +93,10 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        fusedLocationProviderClient =
-            LocationServices.getFusedLocationProviderClient(requireContext())
-
-
+        initView()
         setObserver()
+       // fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
         binding.ZipCode.doAfterTextChanged {
             if (it.toString().length >= 5) {
                 binding.SearchBT.visibility = View.VISIBLE
@@ -93,15 +106,50 @@ class SearchFragment : Fragment() {
         }
 
         binding.CurrentLocationBT.setOnClickListener {
+            currentOrNotification = URL.CurrentOrNotification.CURRENT
             onGPS()
         }
 
         binding.SearchBT.setOnClickListener {
             getWeather(binding.ZipCode.text.toString().trim())
         }
+        binding.btnTurnOnNotification.setOnClickListener {
+            if (binding.btnTurnOnNotification.text == getString(R.string.turn_on_notifications)) {
+                currentOrNotification = URL.CurrentOrNotification.NOTIFICATION
+                if (!isLocationEnabled()) {
+                    requireContext().makeToast("Please give location permission")
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                } else {
+                    fetchLocation()
+                }
+            }
+            if (binding.btnTurnOnNotification.text == getString(R.string.turn_off_notifications)) {
+                binding.btnTurnOnNotification.text = getString(R.string.turn_on_notifications)
+                sharedPref.putIsNotificationOn(false)
+                requireContext().makeToast("Notification is closed.")
+                WorkManager.getInstance(requireContext()).cancelAllWork()
+                requireContext().stopService(
+                    Intent(
+                        requireContext(),
+                        NotificationService::class.java
+                    )
+                )
+            }
+        }
 
 
     }
+
+    private fun initView() {
+        fusedLocationProviderClient =
+            LocationServices.getFusedLocationProviderClient(requireContext())
+        if (sharedPref.isNotificationOn()) {
+            binding.btnTurnOnNotification.text = getString(R.string.turn_off_notifications)
+        } else {
+            binding.btnTurnOnNotification.text = getString(R.string.turn_on_notifications)
+        }
+    }
+
 
     fun setObserver() {
         searchViewModel.weather.observe(viewLifecycleOwner) {
@@ -193,8 +241,19 @@ class SearchFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
+    fun enqueuePeriodicWork() {
+        val constraints =
+            Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+        val periodicWorkRequest =
+            PeriodicWorkRequestBuilder<GetWeatherDataWorker>(10, TimeUnit.MINUTES)
+                .setConstraints(constraints)
+                .build()
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+            "periodic",
+            ExistingPeriodicWorkPolicy.REPLACE,
+            periodicWorkRequest
+        )
     }
+
 
 }

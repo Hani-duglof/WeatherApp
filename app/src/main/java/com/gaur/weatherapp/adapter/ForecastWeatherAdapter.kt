@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
 import com.gaur.weatherapp.model.forecast.DailyWeather
 import com.gaur.weatherapp.Data.convertIntoDate
 import com.gaur.weatherapp.Data.convertMilliTime

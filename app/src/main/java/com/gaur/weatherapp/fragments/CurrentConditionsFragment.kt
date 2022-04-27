@@ -74,7 +74,7 @@ class CurrentConditionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        //isLocationPermissionGranted()
+
         setObserver()
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
@@ -117,9 +117,7 @@ class CurrentConditionsFragment : Fragment() {
                 .load("https://openweathermap.org/img/wn/${it.weather[0].icon}@2x.png")
                 .into(binding.sun)
 
-            Glide.with(binding.sun)
-                .load("https://openweathermap.org/img/wn/${it.weather[0].icon}@2x.png")
-                .into(binding.sun)
+
         }
     }
 
@@ -151,8 +149,8 @@ class CurrentConditionsFragment : Fragment() {
             "High " + formatUptoOneDecimal(it.main.temp_max.minus(273) * 9 / 5 + 32)+"°"
         binding.LowTemp.text =
             "Low " + formatUptoOneDecimal(it.main.temp_min.minus(273) * 9 / 5 + 32)+"°"
-        binding.HumidityTemp.text = "Humidity " + it.main.humidity + " %"
-        binding.PressureTemp.text = "Pressure " + it.main.pressure + " hPa"
+        binding.HumidityTemp.text = "Humidity " + it.main.humidity + "%"
+        binding.PressureTemp.text = "Pressure " + it.main.pressure + "hPa"
         Glide.with(binding.sun)
             .load("https://openweathermap.org/img/wn/${it.weather[0].icon}@2x.png")
             .into(binding.sun)

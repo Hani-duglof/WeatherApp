@@ -16,7 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherApp">
+
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity
+
             android:name="com.gaur.weatherapp.MainActivity"
             android:exported="true">
             <intent-filter>

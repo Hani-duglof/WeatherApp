@@ -75,7 +75,7 @@
                         android:layout_marginTop="@dimen/_8sdp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp"
-                        tools:text="St. Paul,MN" />
+                        tools:text="Feels Like" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

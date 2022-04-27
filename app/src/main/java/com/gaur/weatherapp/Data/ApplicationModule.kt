@@ -1,5 +1,7 @@
 package com.gaur.weatherapp.Data
 
+import android.content.Context
+import android.widget.Toast
 import java.sql.Date
 import java.text.SimpleDateFormat
 
@@ -16,4 +18,7 @@ fun convertMilliTime(milli: Long): String {
 fun convertIntoDate(milli: Long): String {
     val formatter = SimpleDateFormat("MMM dd")
     return formatter.format(milli * 1000)
+}
+fun Context.makeToast(msg: String) {
+    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
