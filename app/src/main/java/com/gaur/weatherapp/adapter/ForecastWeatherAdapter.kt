@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
 import com.gaur.weatherapp.model.forecast.DailyWeather
 import com.gaur.weatherapp.Data.convertIntoDate
 import com.gaur.weatherapp.Data.convertMilliTime
@@ -32,11 +31,11 @@ class ForecastWeatherAdapter(private val list: List<DailyWeather>) :
         val binding = holder.viewDataBinding
         val it = this.list[position]
         binding.Temp1.text =
-            "Temp " + formatUptoOneDecimal(it.feels_like.day.minus(273) * 9 / 5 + 32)
+            "Temp " + formatUptoOneDecimal(it.feels_like.day.minus(273) * 9 / 5 + 32)+"°"
         binding.HighTemp1.text =
-            "High " + formatUptoOneDecimal(it.temp.max.minus(273) * 9 / 5 + 32)
+            "High " + formatUptoOneDecimal(it.temp.max.minus(273) * 9 / 5 + 32)+"°"
         binding.LowTemp1.text =
-            "Low " + formatUptoOneDecimal(it.temp.min.minus(273) * 9 / 5 + 32)
+            "Low " + formatUptoOneDecimal(it.temp.min.minus(273) * 9 / 5 + 32)+"°"
         binding.Sunrise1.text = "Sunrise: " + convertMilliTime(it.sunrise.toLong())
         binding.Sunset1.text = "Sunset: " + convertMilliTime(it.sunset.toLong())
         binding.Date1.text = convertIntoDate(it.dt.toLong())
